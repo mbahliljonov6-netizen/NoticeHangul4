@@ -1,0 +1,9 @@
+{
+  "name": "koreaneasy",
+  "version": "2.0.0",
+  "private": true,
+  "description": "KoreanEasy AI student companion for international students in Korea",
+  "scripts": {
+    "dev": "vercel dev"
+  }
+}

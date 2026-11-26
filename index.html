@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b1020">
+  <title>KoreanEasy — Your AI companion in Korea</title>
+  <meta name="description" content="Understand Korean notices, deadlines, vocabulary and student life with KoreanEasy AI.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <a class="brand" href="#" data-page="dashboard">
+        <span class="brand-mark"><i data-lucide="languages"></i></span>
+        <span><b>KoreanEasy</b><small>AI STUDENT COMPANION</small></span>
+      </a>
+      <div class="side-label">WORKSPACE</div>
+      <nav class="nav-list" aria-label="Main navigation">
+        <button class="nav-item active" data-page="dashboard"><i data-lucide="layout-dashboard"></i><span data-i18n="nav_dashboard">Overview</span></button>
+        <button class="nav-item" data-page="assistant"><i data-lucide="sparkles"></i><span data-i18n="nav_assistant">AI Assistant</span><span class="nav-dot"></span></button>
+        <button class="nav-item" data-page="actions"><i data-lucide="calendar-check"></i><span data-i18n="nav_actions">Important actions</span></button>
+        <button class="nav-item" data-page="ocr"><i data-lucide="scan-text"></i><span data-i18n="nav_ocr">Image reader</span></button>
+        <button class="nav-item" data-page="vocabulary"><i data-lucide="book-open"></i><span data-i18n="nav_vocab">Vocabulary</span></button>
+        <button class="nav-item" data-page="quiz"><i data-lucide="brain"></i><span data-i18n="nav_quiz">Quiz studio</span></button>
+        <div class="side-label side-label-spaced">YOUR SPACE</div>
+        <button class="nav-item" data-page="notifications"><i data-lucide="bell"></i><span data-i18n="nav_notifications">Notifications</span><span class="count-pill" id="notice-count">0</span></button>
+        <button class="nav-item" data-page="history"><i data-lucide="history"></i><span data-i18n="nav_history">History</span></button>
+        <button class="nav-item" data-page="settings"><i data-lucide="settings-2"></i><span data-i18n="nav_settings">Settings</span></button>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="help-card">
+          <div class="help-icon"><i data-lucide="heart-handshake"></i></div>
+          <b>Made for life in Korea</b>
+          <p>Understand the details. Feel more confident.</p>
+          <span>TEAM OREO · KOREAN EASY</span>
+        </div>
+        <div class="profile-row"><div class="avatar">KE</div><div><b>Student workspace</b><small id="profile-language">English interface</small></div><button class="icon-btn" data-page="settings" aria-label="Settings"><i data-lucide="more-horizontal"></i></button></div>
+      </div>
+    </aside>
+
+    <main class="main-area">
+      <header class="topbar">
+        <button class="icon-btn mobile-menu" id="menu-toggle" aria-label="Open menu"><i data-lucide="menu"></i></button>
+        <div class="breadcrumbs"><span>KoreanEasy</span><i data-lucide="chevron-right"></i><b id="crumb">Overview</b></div>
+        <div class="top-actions">
+          <div class="clock-box"><i data-lucide="clock-3"></i><div><b id="live-time">--:--</b><small id="live-date">Loading local time</small></div></div>
+          <button class="icon-btn notification-top" data-page="notifications" aria-label="Notifications"><i data-lucide="bell"></i><span class="top-unread" id="top-unread"></span></button>
+          <button class="theme-toggle" id="theme-cycle" title="Change appearance"><i data-lucide="sun-moon"></i><span id="theme-label">Auto</span></button>
+          <div class="language-wrap"><i data-lucide="globe-2"></i><select id="interface-language" aria-label="Interface language">
+            <option value="en">English</option><option value="uz">O‘zbekcha</option><option value="vi">Tiếng Việt</option><option value="zh">中文</option><option value="mn">Монгол</option><option value="ne">नेपाली</option><option value="th">ไทย</option><option value="ru">Русский</option><option value="ja">日本語</option><option value="id">Bahasa Indonesia</option><option value="km">ខ្មែរ</option><option value="fil">Filipino</option>
+          </select></div>
+        </div>
+      </header>
+
+      <div class="content-wrap">
+        <section class="page active" id="page-dashboard">
+          <div class="welcome-row">
+            <div><div class="eyebrow"><span class="pulse"></span> YOUR SMART CAMPUS COMPANION</div><h1>Make Korea feel <span class="gradient-text">easier.</span></h1><p class="lead">Your Korean notices, deadlines and daily questions — understood in one place.</p></div>
+            <div class="welcome-art"><div class="orb orb-one"></div><div class="orb orb-two"></div><div class="art-core"><i data-lucide="graduation-cap"></i><span>AI</span></div><div class="float-chip chip-one"><i data-lucide="check-circle-2"></i> Deadline found</div><div class="float-chip chip-two"><i data-lucide="languages"></i> 12 languages</div></div>
+          </div>
+          <div class="quick-grid">
+            <button class="quick-card quick-primary" data-page="assistant"><span class="quick-icon"><i data-lucide="message-square-text"></i></span><span><b>Understand a notice</b><small>Paste Korean text and get a clear explanation</small></span><i data-lucide="arrow-up-right" class="quick-arrow"></i></button>
+            <button class="quick-card" data-page="ocr"><span class="quick-icon purple"><i data-lucide="image-up"></i></span><span><b>Read a screenshot</b><small>Extract Korean text from an image</small></span><i data-lucide="arrow-up-right" class="quick-arrow"></i></button>
+            <button class="quick-card" data-page="assistant" data-focus="voice"><span class="quick-icon orange"><i data-lucide="mic"></i></span><span><b>Ask by voice</b><small>Speak naturally, get an AI answer</small></span><i data-lucide="arrow-up-right" class="quick-arrow"></i></button>
+          </div>
+          <div class="section-heading"><div><div class="eyebrow">YOUR STUDY SPACE</div><h2>At a glance</h2></div><span class="muted small">Saved on this device</span></div>
+          <div class="stats-grid">
+            <div class="stat-card"><span class="stat-icon blue"><i data-lucide="file-check-2"></i></span><small>AI analyses</small><b id="stat-analyses">0</b><span class="stat-foot">Your recent explanations</span></div>
+            <div class="stat-card"><span class="stat-icon purple"><i data-lucide="bookmark"></i></span><small>Saved words</small><b id="stat-words">0</b><span class="stat-foot">Build your vocabulary</span></div>
+            <div class="stat-card"><span class="stat-icon orange"><i data-lucide="bell-ring"></i></span><small>Reminders</small><b id="stat-reminders">0</b><span class="stat-foot">Actions you saved</span></div>
+            <div class="stat-card"><span class="stat-icon green"><i data-lucide="trophy"></i></span><small>Quiz attempts</small><b id="stat-quizzes">0</b><span class="stat-foot">Practice makes progress</span></div>
+          </div>
+          <div class="dashboard-bottom">
+            <div class="panel recent-panel"><div class="panel-head"><div><h3>Recent activity</h3><p>Your latest AI sessions</p></div><button class="text-btn" data-page="history">View history <i data-lucide="arrow-right"></i></button></div><div id="recent-list" class="empty-state compact"><i data-lucide="history"></i><b>No activity yet</b><span>Your AI sessions will appear here.</span></div></div>
+            <div class="panel tip-panel"><div class="tip-spark"><i data-lucide="lightbulb"></i></div><div class="eyebrow">QUICK TIP</div><h3>Never miss an important detail.</h3><p>Paste a university announcement and KoreanEasy will highlight deadlines, locations and what you need to do.</p><button class="btn btn-dark" data-page="assistant">Try AI Assistant <i data-lucide="arrow-up-right"></i></button></div>
+          </div>
+        </section>
+
+        <section class="page" id="page-assistant">
+          <div class="page-heading"><div><div class="eyebrow">GEMINI-POWERED</div><h1>AI Assistant</h1><p class="lead">Turn complicated Korean into clear next steps.</p></div><span class="ai-badge"><i data-lucide="sparkles"></i> AI READY</span></div>
+          <div class="assistant-layout">
+            <div class="panel input-panel">
+              <div class="panel-head"><div><h3>What do you need help with?</h3><p>Paste a Korean notice, assignment or message.</p></div><span class="step-tag">01 / INPUT</span></div>
+              <textarea id="korean-input" class="main-textarea" maxlength="5000" placeholder="예: 과제 제출 기한은 11월 30일 오후 11시 59분까지입니다. LMS에 PDF 파일로 제출하세요."></textarea>
+              <div class="input-meta"><span id="char-count">0 / 5,000</span><button class="text-btn" id="example-btn">Use sample notice <i data-lucide="arrow-down-to-line"></i></button></div>
+              <div class="input-options"><label>Explain in<select id="output-language" class="field-select"><option value="English">English</option><option value="Uzbek">O‘zbekcha</option><option value="Vietnamese">Tiếng Việt</option><option value="Chinese">中文</option><option value="Mongolian">Монгол</option><option value="Nepali">नेपाली</option><option value="Thai">ไทย</option><option value="Russian">Русский</option><option value="Japanese">日本語</option><option value="Indonesian">Bahasa Indonesia</option><option value="Khmer">ខ្មែរ</option><option value="Filipino">Filipino</option></select></label><span class="secure-note"><i data-lucide="shield-check"></i> Private API connection</span></div>
+              <div class="action-row"><button class="btn btn-primary" id="analyze-btn"><i data-lucide="sparkles"></i> Explain with AI</button><button class="btn btn-ghost" id="clear-btn">Clear</button><span id="assistant-status" class="status-text" role="status"></span></div>
+            </div>
+            <div class="panel voice-panel">
+              <div class="voice-orbit"><div class="voice-ring"></div><div class="voice-core"><i data-lucide="mic"></i></div></div>
+              <div class="eyebrow">TALK TO KOREANEASY</div><h3>Ask naturally.</h3><p>Use your microphone to ask a question. Your browser must support speech recognition and microphone access.</p>
+              <button class="btn btn-dark" id="voice-btn"><i data-lucide="mic"></i><span>Start speaking</span></button>
+              <small id="voice-status" class="muted">Voice support depends on your browser.</small><div id="voice-answer" class="voice-answer" hidden></div>
+            </div>
+          </div>
+          <div id="analysis-results" class="results-area" hidden>
+            <div class="results-title"><div><div class="eyebrow">YOUR AI REPORT</div><h2>Here’s what it means</h2></div><button class="btn btn-ghost" id="copy-report"><i data-lucide="copy"></i> Copy report</button></div>
+            <div class="result-grid">
+              <div class="panel summary-panel"><div class="result-heading"><span class="result-icon blue"><i data-lucide="align-left"></i></span><div><h3>Simple summary</h3><small>In plain language</small></div></div><p id="result-summary"></p></div>
+              <div class="panel action-result"><div class="result-heading"><span class="result-icon orange"><i data-lucide="calendar-check"></i></span><div><h3>Important actions</h3><small>Details to remember</small></div></div><div id="result-actions"></div></div>
+              <div class="panel words-result"><div class="result-heading"><span class="result-icon purple"><i data-lucide="book-open"></i></span><div><h3>Key vocabulary</h3><small>Save words to study later</small></div></div><div id="result-words"></div></div>
+              <div class="panel quiz-result"><div class="result-heading"><span class="result-icon green"><i data-lucide="brain"></i></span><div><h3>Quick comprehension check</h3><small>Test what you understood</small></div></div><div id="result-quiz"></div></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="page" id="page-actions">
+          <div class="page-heading"><div><div class="eyebrow">STAY ON TRACK</div><h1>Important actions</h1><p class="lead">Keep deadlines, places and tasks visible.</p></div></div>
+          <div class="panel"><div class="panel-head"><div><h3>Your saved reminders</h3><p>Created from AI analyses or added manually.</p></div><button class="btn btn-primary btn-small" id="add-reminder"><i data-lucide="plus"></i> Add reminder</button></div><div id="reminder-list" class="empty-state"><i data-lucide="calendar-check"></i><b>No reminders yet</b><span>Analyze a Korean notice and save its important actions.</span></div></div>
+        </section>
+
+        <section class="page" id="page-ocr">
+          <div class="page-heading"><div><div class="eyebrow">IMAGE TO TEXT</div><h1>Image reader</h1><p class="lead">Extract Korean writing from a screenshot or notice image.</p></div></div>
+          <div class="panel upload-panel">
+            <label class="upload-zone" for="image-file"><span class="upload-icon"><i data-lucide="image-plus"></i></span><b>Drop an image here or browse</b><small>PNG, JPG or WEBP · OCR runs in your browser using Korean language data</small><input type="file" id="image-file" accept="image/png,image/jpeg,image/webp"></label>
+            <div id="ocr-progress" class="progress-wrap" hidden><div class="progress-track"><span id="ocr-progress-bar"></span></div><small id="ocr-status">Preparing OCR…</small></div>
+            <div id="ocr-preview-wrap" hidden><img id="ocr-preview" alt="Selected notice preview"><div class="ocr-text-wrap"><label for="ocr-text">Extracted Korean text (review and correct before analysis)</label><textarea id="ocr-text" class="main-textarea" placeholder="Extracted text appears here..."></textarea><button class="btn btn-primary" id="analyze-ocr"><i data-lucide="sparkles"></i> Analyze this text</button></div></div>
+          </div>
+          <p class="note-line"><i data-lucide="info"></i> OCR accuracy depends on image quality. Please review dates and numbers before relying on them.</p>
+        </section>
+
+        <section class="page" id="page-vocabulary">
+          <div class="page-heading"><div><div class="eyebrow">GROW EVERY DAY</div><h1>My vocabulary</h1><p class="lead">Your personal collection of useful Korean words.</p></div><span class="count-pill large" id="vocab-count">0 WORDS</span></div>
+          <div class="panel"><div class="panel-head"><div><h3>Saved words</h3><p>Words saved from your AI reports.</p></div><input id="vocab-search" class="search-input" placeholder="Search words…"></div><div id="vocab-list" class="empty-state"><i data-lucide="bookmark"></i><b>No saved words yet</b><span>Save a word from an AI report to see it here.</span></div></div>
+        </section>
+
+        <section class="page" id="page-quiz">
+          <div class="page-heading"><div><div class="eyebrow">CHECK YOUR UNDERSTANDING</div><h1>Quiz studio</h1><p class="lead">Practice with questions generated from your Korean notices.</p></div></div>
+          <div class="panel"><div class="panel-head"><div><h3>Latest quiz</h3><p>Analyze a notice first to generate a new quiz.</p></div><span class="step-tag">PRACTICE</span></div><div id="quiz-studio" class="empty-state"><i data-lucide="brain"></i><b>No quiz available</b><span>Your latest comprehension quiz will appear here.</span><button class="btn btn-primary" data-page="assistant">Analyze a notice</button></div></div>
+          <div class="panel score-panel"><div><b>Your practice record</b><p class="muted">Completed quiz attempts on this device.</p></div><strong id="quiz-record">0 attempts</strong></div>
+        </section>
+
+        <section class="page" id="page-notifications">
+          <div class="page-heading"><div><div class="eyebrow">YOUR UPDATES</div><h1>Notifications</h1><p class="lead">A clear place for reminders and saved updates.</p></div><button class="btn btn-ghost btn-small" id="mark-read">Mark all read</button></div>
+          <div class="panel"><div id="notification-list" class="empty-state"><i data-lucide="bell"></i><b>You're all caught up</b><span>Saved reminders and app updates will appear here.</span></div></div>
+        </section>
+
+        <section class="page" id="page-history">
+          <div class="page-heading"><div><div class="eyebrow">YOUR LEARNING JOURNEY</div><h1>History</h1><p class="lead">Revisit your recent explanations and practice.</p></div><button class="btn btn-ghost btn-small" id="clear-history">Clear history</button></div>
+          <div class="panel"><div id="history-list" class="empty-state"><i data-lucide="history"></i><b>No history yet</b><span>Your AI analyses will be saved locally in this browser.</span></div></div>
+        </section>
+
+        <section class="page" id="page-settings">
+          <div class="page-heading"><div><div class="eyebrow">MAKE IT YOURS</div><h1>Settings</h1><p class="lead">Choose how KoreanEasy works for you.</p></div></div>
+          <div class="settings-grid">
+            <div class="panel settings-card"><span class="settings-icon"><i data-lucide="palette"></i></span><h3>Appearance</h3><p>Choose light, dark or automatic based on your device.</p><div class="segmented" id="theme-options"><button data-theme-choice="light">Light</button><button data-theme-choice="dark">Dark</button><button data-theme-choice="auto" class="selected">Auto</button></div></div>
+            <div class="panel settings-card"><span class="settings-icon"><i data-lucide="globe"></i></span><h3>Interface language</h3><p>Choose your preferred language for the interface.</p><select id="settings-language" class="field-select full"><option value="en">English</option><option value="uz">O‘zbekcha</option><option value="vi">Tiếng Việt</option><option value="zh">中文</option><option value="mn">Монгол</option><option value="ne">नेपाली</option><option value="th">ไทย</option><option value="ru">Русский</option><option value="ja">日本語</option><option value="id">Bahasa Indonesia</option><option value="km">ខ្មែរ</option><option value="fil">Filipino</option></select></div>
+            <div class="panel settings-card"><span class="settings-icon"><i data-lucide="database"></i></span><h3>Your data</h3><p>Vocabulary, history and reminders are stored in this browser, not synced across devices.</p><button class="btn btn-ghost btn-small" id="export-data"><i data-lucide="download"></i> Export my data</button></div>
+            <div class="panel settings-card"><span class="settings-icon"><i data-lucide="shield-check"></i></span><h3>Privacy & limits</h3><p>AI requests are sent to your configured Gemini backend. Do not paste passwords, private IDs or sensitive personal information.</p><span class="privacy-label">API key stays on the server</span></div>
+          </div>
+        </section>
+        <footer class="footer"><span>© 2026 KoreanEasy · Team Oreo</span><span>Built to make student life in Korea easier <i data-lucide="heart"></i></span></footer>
+      </div>
+    </main>
+  </div>
+  <div class="toast" id="toast" role="status"></div>
+  <div class="modal-backdrop" id="modal" hidden><div class="modal-card"><div class="modal-head"><h3 id="modal-title">Add reminder</h3><button class="icon-btn" id="modal-close"><i data-lucide="x"></i></button></div><label>What should you remember?<input id="reminder-title" class="text-input" placeholder="e.g. Submit final assignment"></label><label>Date and time<input id="reminder-date" type="datetime-local" class="text-input"></label><div class="modal-actions"><button class="btn btn-ghost" id="modal-cancel">Cancel</button><button class="btn btn-primary" id="modal-save">Save reminder</button></div></div></div>
+  <script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
+  <script src="/js/app.js"></script>
+</body>
+</html>
